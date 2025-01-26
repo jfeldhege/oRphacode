@@ -22,7 +22,8 @@ build_req <- function(lang,
     httr2::req_url_path_append("ClinicalEntity") |>
     httr2::req_url_path_append(params) |>
     httr2::req_headers("Accept" = "application/json")|>
-    httr2::req_headers("apiKey" = apiKey)
+    httr2::req_headers("apiKey" = apiKey) |>
+    httr2::req_user_agent("R package oRphacode (github.com/jfeldhege/oRphacode)")
 }
 
 #' Convert response body to data frame
