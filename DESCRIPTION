@@ -1,12 +1,10 @@
 Package: oRphacode
-Title: Provides access to the ORPHAcode API
+Title: Provides access to the 'ORPHAcode' API
 Version: 0.0.0.9000
 Authors@R: 
-    person("Johannes", "Feldhege", , "mail@johannesfeldhege.de", role = c("aut", "cre"),
+    person("Johannes", "Feldhege", , "mail@johannesfeldhege.de", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-4665-5235"))
-Description: Provides access to the Orphanet nomenclature, a multilingual,
-    standardised, controlled medical terminology specific to rare
-    diseases, through the ORPHAcode API at https://api.orphacode.org/.
+Description: Provides access to the 'Orphanet' nomenclature, a multilingual, standardised, controlled medical terminology specific to rare diseases, through the 'ORPHAcode' API at <https://api.orphacode.org/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en
