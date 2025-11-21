@@ -4,3 +4,5 @@ dev_script.R
 todo.txt
 ^LICENSE\.md$
 readme.md
+^\.github$
+^README\.Rmd$

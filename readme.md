@@ -1,10 +1,22 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# oRphacode
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/jfeldhege/oRphacode/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jfeldhege/oRphacode/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 oRphacode
 
-Provides access to the Orphanet nomenclature, a multilingual, standardised, controlled medical terminology specific to rare diseases, through the ORPHAcode API at <https://api.orphacode.org/>.
+Provides access to the Orphanet nomenclature, a multilingual,
+standardised, controlled medical terminology specific to rare diseases,
+through the ORPHAcode API at <https://api.orphacode.org/>.
 
 ## Installation
 
-You can install the current version version from [GitHub](https://github.com/) with:
+You can install the current version version from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
