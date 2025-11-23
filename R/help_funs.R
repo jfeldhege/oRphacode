@@ -3,14 +3,16 @@
 #'
 #' @param lang Language
 #' @param params parameters of the request
-#' @param apiKey API key
+#' @param api_key API key
 #'
 #' @return An HTTP request: an S3 list with class httr2_request.
+#'
+#' @keywords internal
 #' @noRd
 
 build_req <- function(lang,
-                        params,
-                        apiKey){
+                      params,
+                      api_key){
 
   # httr2::request(paste0("https://api.orphacode.org/",
   #                       lang,
@@ -22,8 +24,8 @@ build_req <- function(lang,
     httr2::req_url_path_append("ClinicalEntity") |>
     httr2::req_url_path_append(params) |>
     httr2::req_headers("Accept" = "application/json")|>
-    httr2::req_headers("apiKey" = apiKey) |>
-    httr2::req_user_agent("R package oRphacode (github.com/jfeldhege/oRphacode)")
+    httr2::req_headers("apiKey" = api_key) |>
+    httr2::req_user_agent("R package oRphacode (https://github.com/jfeldhege/oRphacode)")
 }
 
 #' Convert response body to data frame
@@ -32,6 +34,8 @@ build_req <- function(lang,
 #' @param output Output type. Must be "df", "list", or "json"
 #'
 #' @return a data frame
+#'
+#' @keywords internal
 #' @noRd
 
 convert_body <- function(resp_body,

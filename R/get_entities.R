@@ -1,17 +1,18 @@
-#' Title
+#' Get all Orphanet clinical entities
+#'
+#' Retrieves all clinical entities from the 'ORPHAcode' API.
 #'
 #' @inheritParams get_icd10
 #'
 #' @return A data frame containing all entities in the chosen language.
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#'@examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' get_entities(lang = "EN",
-#'              apiKey = "Apikey here")
-#' }
+#'              api_key = "jfeldhege")
+#'
 get_entities <- function(lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-                         apiKey,
+                         api_key,
                          output = c("df", "list", "json"),
                          verbosity = 0) {
 
@@ -19,8 +20,8 @@ get_entities <- function(lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL"
   output <- match.arg(output)
 
   req <- build_req(lang,
-                     params = NULL,
-                     apiKey)
+                   params = NULL,
+                   api_key)
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
 
