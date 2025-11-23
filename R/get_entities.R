@@ -7,7 +7,7 @@
 #' @return A data frame containing all entities in the chosen language.
 #' @export
 #'
-#'@examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' get_entities(lang = "EN",
 #'              api_key = "jfeldhege")
 #'
