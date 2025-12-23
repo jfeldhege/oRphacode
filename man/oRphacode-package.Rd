@@ -4,12 +4,12 @@
 \name{oRphacode-package}
 \alias{oRphacode}
 \alias{oRphacode-package}
-\title{oRphacode: Provides access to the ORPHAcode API}
+\title{oRphacode: Provides access to the 'ORPHAcode' API}
 \description{
-Provides access to the Orphanet nomenclature, a multilingual, standardised, controlled medical terminology specific to rare diseases, through the ORPHAcode API at https://api.orphacode.org/.
+Provides access to the 'Orphanet' nomenclature, a multilingual, standardised, controlled medical terminology specific to rare diseases, through the 'ORPHAcode' API at \url{https://api.orphacode.org/}.
 }
 \author{
-\strong{Maintainer}: Johannes Feldhege \email{mail@johannesfeldhege.de} (\href{https://orcid.org/0000-0002-4665-5235}{ORCID})
+\strong{Maintainer}: Johannes Feldhege \email{mail@johannesfeldhege.de} (\href{https://orcid.org/0000-0002-4665-5235}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}
