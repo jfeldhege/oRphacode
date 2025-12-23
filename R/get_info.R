@@ -157,7 +157,7 @@ get_typology <- function(code,
   stopifnot(is.character(api_key))
 
   req <- build_req(lang,
-                   params = paste0("/orphacode/", code, "/typology"),
+                   params = paste0("/orphacode/", code, "/Typology"),
                    api_key)
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
