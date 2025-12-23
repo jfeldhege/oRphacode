@@ -16,4 +16,3 @@ test_that("get_classification returns correct output format", {
   expect_type(lst, "list")
 
 })
-

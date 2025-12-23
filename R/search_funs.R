@@ -62,7 +62,6 @@ search_name <- function(name,
 
   lang <- toupper(match.arg(lang))
   output <- match.arg(output)
-  #name <- gsub(" ", "%20", as.character(name))
   param <- ifelse(exact, "FindbyName", "ApproximateName")
 
   req <- build_req(lang,

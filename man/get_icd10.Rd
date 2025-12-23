@@ -6,7 +6,7 @@
 \usage{
 get_icd10(
   ORPHAcode = NULL,
-  icd10code = NULL,
+  icd10_code = NULL,
   lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
   api_key,
   output = c("df", "list", "json"),
@@ -16,7 +16,7 @@ get_icd10(
 \arguments{
 \item{ORPHAcode}{The ORPHAcode}
 
-\item{icd10code}{The ICD-10 code to look for}
+\item{icd10_code}{The ICD-10 code to look for}
 
 \item{lang}{The language in which entities are to be returned. Possible
 values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".}

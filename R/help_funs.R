@@ -12,18 +12,13 @@
 
 build_req <- function(lang,
                       params,
-                      api_key){
+                      api_key) {
 
-  # httr2::request(paste0("https://api.orphacode.org/",
-  #                       lang,
-  #                       "/ClinicalEntity",
-  #                       params
-  # ))
   httr2::request("https://api.orphacode.org/") |>
     httr2::req_url_path_append(lang)  |>
     httr2::req_url_path_append("ClinicalEntity") |>
     httr2::req_url_path_append(params) |>
-    httr2::req_headers("Accept" = "application/json")|>
+    httr2::req_headers("Accept" = "application/json") |>
     httr2::req_headers("apiKey" = api_key) |>
     httr2::req_user_agent("R package oRphacode (https://github.com/jfeldhege/oRphacode)")
 }
@@ -51,4 +46,3 @@ convert_body <- function(resp_body,
     jsonlite::fromJSON(resp_body)
   }
 }
-
