@@ -8,7 +8,7 @@ get_icd11(
   ORPHAcode = NULL,
   icd11code = NULL,
   lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-  apiKey,
+  api_key,
   output = c("df", "list", "json"),
   verbosity = 0
 )
@@ -21,7 +21,7 @@ get_icd11(
 \item{lang}{The language in which entities are to be returned. Possible
 values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".}
 
-\item{apiKey}{The API key to use for authentication.}
+\item{api_key}{The API key to use for authentication.}
 
 \item{output}{The format of the output. Must be "df" for a data frame,
 "list" for a list or "json" for a raw json string.}
@@ -35,13 +35,16 @@ Depending on the output format chosen, a data frame, list or raw json string.
 Find association of ORPHAcode and ICD-11 code
 }
 \examples{
-\dontrun{
-get_icd11(ORPHAcode = 15,
-lang = "EN",
-apiKey = "Apikey here")
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
+# Get ICD-11 code for Achondroplasia (ORPHAcode = 15)
+get_icd11(ORPHAcode = 15,
+          lang = "EN",
+          api_key = "jfeldhege/oRphacode")
+
+# Search orphacodes for ICD-11 code LD24.00 for Achondroplasia
 get_icd11(icd11code = "LD24.00",
-lang = "EN",
-apiKey = "Apikey here")
-}
+          lang = "EN",
+          api_key = "jfeldhege/oRphacode")
+\dontshow{\}) # examplesIf}
 }

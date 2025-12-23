@@ -2,7 +2,7 @@ test_that("get_entities returns a data frame", {
   skip_on_cran()
 
   df <- get_entities(lang = "EN",
-                     api_key = "jfeldhege")
+                     api_key = "jfeldhege/oRphacode")
 
   expect_s3_class(df, "data.frame")
 

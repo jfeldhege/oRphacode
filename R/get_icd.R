@@ -76,18 +76,21 @@ get_icd10 <- function(ORPHAcode = NULL,
 #' @export
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
-#' get_icd11(ORPHAcode = 15,
-#' lang = "EN",
-#' apiKey = "Apikey here")
 #'
+#' # Get ICD-11 code for Achondroplasia (ORPHAcode = 15)
+#' get_icd11(ORPHAcode = 15,
+#'           lang = "EN",
+#'           api_key = "jfeldhege/oRphacode")
+#'
+#' # Search orphacodes for ICD-11 code LD24.00 for Achondroplasia
 #' get_icd11(icd11code = "LD24.00",
-#' lang = "EN",
-#' apiKey = "Apikey here")
+#'           lang = "EN",
+#'           api_key = "jfeldhege/oRphacode")
 #'
 get_icd11 <- function(ORPHAcode = NULL,
                       icd11code = NULL,
                       lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-                      apiKey,
+                      api_key,
                       output = c("df", "list", "json"),
                       verbosity = 0) {
 
@@ -103,14 +106,14 @@ get_icd11 <- function(ORPHAcode = NULL,
 
     req <- build_req(lang,
                      params = paste0("/orphacode/", ORPHAcode, "/ICD11"),
-                     apiKey)
+                     api_key)
   } else if (!is.null(icd11code)) {
 
     stopifnot(is.character(icd11code))
 
     req <- build_req(lang,
                      params = paste0("/ICD11/", icd11code),
-                     apiKey)
+                     api_key)
   } else {
     stop("Only one of ORPHAcode or icd11code must be specified.")
   }

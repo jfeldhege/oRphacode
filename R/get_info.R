@@ -11,26 +11,25 @@
 #' @return A data frame containing the ORPHAcode, the type and the date.
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' # Get status for a code
 #' get_info(code = 16,
 #'          type = "Status",
 #'          lang = "EN",
-#'          apiKey = "Apikey here")
+#'          api_key = "jfeldhege/oRphacode")
 #'
 #' # Get definition for a code
 #' get_info(code = 16,
 #'          type = "Definition",
 #'          lang = "EN",
-#'          apiKey = "Apikey here")
-#' }
+#'          api_key = "jfeldhege/oRphacode")
+#'
 #'
 get_info <- function(code,
                      type = c("Definition", "Status", "Typology",
                               "Classification", "ClassificationLevel"),
                      lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-                     apiKey,
+                     api_key,
                      output = c("df", "list", "json"),
                      verbosity = 0) {
 
@@ -40,8 +39,8 @@ get_info <- function(code,
   stopifnot(is.numeric(code))
 
   req <- build_req(lang,
-                     params = paste0("/orphacode/", code, "/", type),
-                     apiKey)
+                   params = paste0("/orphacode/", code, "/", type),
+                   api_key)
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
 

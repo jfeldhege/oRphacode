@@ -7,7 +7,7 @@
 search_code(
   code,
   lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-  apiKey,
+  api_key,
   output = c("df", "list", "json"),
   verbosity = 0
 )
@@ -18,7 +18,7 @@ search_code(
 \item{lang}{The language in which entities are to be returned. Possible
 values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".}
 
-\item{apiKey}{The API key to use for authentication.}
+\item{api_key}{The API key to use for authentication.}
 
 \item{output}{The format of the output. Must be "df" for a data frame,
 "list" for a list or "json" for a raw json string.}
@@ -32,10 +32,11 @@ A data frame containing
 Search by Orphacode
 }
 \examples{
-\dontrun{
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 search_code(code = 16,
             lang = "EN",
-            apiKey = "Apikey here")
-}
+            api_key = "jfeldhege/oRphacode")
 
+\dontshow{\}) # examplesIf}
 }

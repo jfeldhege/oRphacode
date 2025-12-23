@@ -8,7 +8,7 @@ get_icd10(
   ORPHAcode = NULL,
   icd10code = NULL,
   lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-  apiKey,
+  api_key,
   output = c("df", "list", "json"),
   verbosity = 0
 )
@@ -21,7 +21,7 @@ get_icd10(
 \item{lang}{The language in which entities are to be returned. Possible
 values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".}
 
-\item{apiKey}{The API key to use for authentication.}
+\item{api_key}{The API key to use for authentication.}
 
 \item{output}{The format of the output. Must be "df" for a data frame,
 "list" for a list or "json" for a raw json string.}
@@ -35,15 +35,16 @@ A data frame
 Find association of ORPHAcode and ICD-10 code
 }
 \examples{
-\dontrun{
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 get_icd10(ORPHAcode = 15,
-lang = "EN",
-apiKey = "Apikey here")
+          lang = "EN",
+          api_key = "Apikey here")
 
 get_icd10(icd10code = "Q77.4",
-lang = "EN",
-apiKey = "Apikey here")
-}
+          lang = "EN",
+          api_key = "Apikey here")
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=get_icd11]{get_icd11()}}

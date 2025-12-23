@@ -6,16 +6,16 @@
 #' @return A data frame containing
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#'
 #' search_code(code = 16,
 #'             lang = "EN",
-#'             apiKey = "Apikey here")
-#' }
+#'             api_key = "jfeldhege/oRphacode")
+#'
 #'
 search_code <- function(code,
                         lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-                        apiKey,
+                        api_key,
                         output = c("df", "list", "json"),
                         verbosity = 0) {
 
@@ -25,7 +25,7 @@ search_code <- function(code,
 
   req <- build_req(lang,
                    params = paste0("/orphacode/", code, "/Name"),
-                   apiKey)
+                   api_key)
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
 
@@ -45,29 +45,29 @@ search_code <- function(code,
 #' - Date
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' # Search for the name Marfan syndrome
 #' search_name(name = "Marfan syndrome",
 #'             exact = FALSE,
 #'             lang = "EN",
-#'             apiKey = "Apikey here")
-#' }
+#'             api_key = "jfeldhege/oRphacode")
+#'
 
 search_name <- function(name,
                         exact = FALSE,
                         lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-                        apiKey,
+                        api_key,
                         output = c("df", "list", "json"),
                         verbosity = 0) {
 
   lang <- toupper(match.arg(lang))
   output <- match.arg(output)
-  name <- gsub(" ", "%20", as.character(name))
+  #name <- gsub(" ", "%20", as.character(name))
   param <- ifelse(exact, "FindbyName", "ApproximateName")
 
   req <- build_req(lang,
                    params = paste0("/", param, "/", name),
-                   apiKey)
+                   api_key)
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
 
@@ -86,19 +86,19 @@ search_name <- function(name,
 #' - Date
 #' @export
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#'
 #' search_synonym(synonym = "MFS",
 #'                exact = FALSE,
 #'                lang = "EN",
-#'                apiKey = "Apikey here")
-#' }
+#'                api_key = "jfeldhege/oRphacode")
+#'
 #'
 
 search_synonym <- function(synonym,
                            exact = FALSE,
                            lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
-                           apiKey,
+                           api_key,
                            output = c("df", "list", "json"),
                            verbosity = 0) {
 
@@ -109,10 +109,18 @@ search_synonym <- function(synonym,
 
   req <- build_req(lang,
                    params = paste0("/", param, "/", synonym, "/Synonym"),
-                   apiKey)
+                   api_key)
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
 
   convert_body(resp$body, output = output)
 }
 
+
+# get_synonym_findbyName <- function(synonym,
+#                                    lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
+#                                    api_key) {
+#   req <- build_req(lang,
+#                    params = paste0("/FindbyName/", synonym, "/Synonym"),
+#                    api_key)
+# }
