@@ -164,3 +164,47 @@ get_typology <- function(code,
 
   convert_body(resp$body, output = output)
 }
+
+
+
+#' Get a summary for a specified Orphacode
+#'
+#' The summary contains status, preferred term, classification level,
+#' definition, typology, synonyms, preferred parent, and URL for the ORPHAcode.
+#'
+#' @inheritParams get_icd10
+#' @param code Orphacode to search for. Must be numeric
+#'
+#' @returns A data frame, list or json containing a summary for a specified ORPHAcode.
+#' @export
+#'
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' # Get summary for blue cone monochromatism (ORPHAcode 16)
+#' get_summary(code = 16,
+#'          lang = "EN",
+#'          api_key = "jfeldhege/oRphacode")
+#'
+#' # Get summary for the category rare bone diseases (ORPHAcode 93419)
+#' get_summary(code = 93419,
+#'          lang = "EN",
+#'          api_key = "jfeldhege/oRphacode")
+#'
+get_summary <- function(code,
+                        lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
+                        api_key,
+                        output = c("df", "list", "json"),
+                        verbosity = 0) {
+
+  lang <- toupper(match.arg(lang))
+  output <- match.arg(output)
+  stopifnot(is.numeric(code))
+  stopifnot(is.character(api_key))
+
+  req <- build_req(lang,
+                   params = paste0("/orphacode/", code, "/Typology"),
+                   api_key)
+
+  resp <- httr2::req_perform(req, verbosity = verbosity)
+
+  convert_body(resp$body, output = output)
+}
