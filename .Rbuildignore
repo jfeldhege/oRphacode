@@ -6,3 +6,4 @@ todo.txt
 readme.md
 ^\.github$
 ^README\.Rmd$
+^codecov\.yml$
