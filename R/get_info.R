@@ -8,7 +8,7 @@
 #' @param type The type of information to return. Possible values are "Status",
 #' "Definition", "Typology"
 #'
-#' @return A data frame, list or json containing the ORPHAcode, the type and the date.
+#' @returns A data frame, list or json containing the ORPHAcode, the type and the date.
 #' @export
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")

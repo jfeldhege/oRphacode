@@ -1,7 +1,7 @@
 
 #' Find association of ORPHAcode and ICD-10 code
 #'
-#' @param ORPHAcode The ORPHAcode
+#' @param orpha_code The ORPHAcode
 #' @param icd10_code The ICD-10 code to look for
 #' @param lang The language in which entities are to be returned. Possible
 #' values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".
@@ -10,14 +10,14 @@
 #'  "list" for a list or "json" for a raw json string.
 #' @param verbosity How much information to print
 #'
-#' @return A data frame
+#' @returns A data frame
 #' @export
 #'
 #' @seealso [get_icd11()]
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #'
-#' get_icd10(ORPHAcode = 15,
+#' get_icd10(orpha_code = 15,
 #'           lang = "EN",
 #'           api_key = "Apikey here")
 #'
@@ -25,7 +25,7 @@
 #'           lang = "EN",
 #'           api_key = "Apikey here")
 #'
-get_icd10 <- function(ORPHAcode = NULL,
+get_icd10 <- function(orpha_code = NULL,
                       icd10_code = NULL,
                       lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
                       api_key,
@@ -35,16 +35,16 @@ get_icd10 <- function(ORPHAcode = NULL,
   lang <- toupper(match.arg(lang))
   output <- match.arg(output)
 
-  if (is.null(ORPHAcode) && is.null(icd10_code)) {
+  if (is.null(orpha_code) && is.null(icd10_code)) {
 
-    stop("One of ORPHAcode or icd10_code must be specified.")
+    stop("One of orpha_code or icd10_code must be specified.")
 
-  } else if (!is.null(ORPHAcode)) {
+  } else if (!is.null(orpha_code)) {
 
-    stopifnot(is.numeric(ORPHAcode))
+    stopifnot(is.numeric(orpha_code))
 
     req <- build_req(lang,
-                     params = paste0("/orphacode/", ORPHAcode, "/ICD10"),
+                     params = paste0("/orphacode/", orpha_code, "/ICD10"),
                      api_key)
 
   } else if (!is.null(icd10_code)) {
@@ -56,7 +56,7 @@ get_icd10 <- function(ORPHAcode = NULL,
                      api_key)
   } else {
 
-    stop("Only one of ORPHAcode or icd10_code must be specified.")
+    stop("Only one of orpha_code or icd10_code must be specified.")
   }
 
   resp <- httr2::req_perform(req, verbosity = verbosity)
@@ -72,13 +72,13 @@ get_icd10 <- function(ORPHAcode = NULL,
 #' @inheritParams get_icd10
 #' @param icd11_code The ICD-11 code to look for
 #'
-#' @return Depending on the output format chosen, a data frame, list or raw json string.
+#' @returns Depending on the output format chosen, a data frame, list or raw json string.
 #' @export
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #'
 #' # Get ICD-11 code for Achondroplasia (ORPHAcode = 15)
-#' get_icd11(ORPHAcode = 15,
+#' get_icd11(orpha_code = 15,
 #'           lang = "EN",
 #'           api_key = "jfeldhege/oRphacode")
 #'
@@ -87,7 +87,7 @@ get_icd10 <- function(ORPHAcode = NULL,
 #'           lang = "EN",
 #'           api_key = "jfeldhege/oRphacode")
 #'
-get_icd11 <- function(ORPHAcode = NULL,
+get_icd11 <- function(orpha_code = NULL,
                       icd11_code = NULL,
                       lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
                       api_key,
@@ -97,15 +97,15 @@ get_icd11 <- function(ORPHAcode = NULL,
   lang <- toupper(match.arg(lang))
   output <- match.arg(output)
 
-  if (is.null(ORPHAcode) && is.null(icd11_code)) {
+  if (is.null(orpha_code) && is.null(icd11_code)) {
 
-    stop("One of ORPHAcode or icd11_code must be specified.")
-  } else if (!is.null(ORPHAcode)) {
+    stop("One of orpha_code or icd11_code must be specified.")
+  } else if (!is.null(orpha_code)) {
 
-    stopifnot(is.numeric(ORPHAcode))
+    stopifnot(is.numeric(orpha_code))
 
     req <- build_req(lang,
-                     params = paste0("/orphacode/", ORPHAcode, "/ICD11"),
+                     params = paste0("/orphacode/", orpha_code, "/ICD11"),
                      api_key)
   } else if (!is.null(icd11_code)) {
 
@@ -115,7 +115,7 @@ get_icd11 <- function(ORPHAcode = NULL,
                      params = paste0("/ICD11/", icd11_code),
                      api_key)
   } else {
-    stop("Only one of ORPHAcode or icd11_code must be specified.")
+    stop("Only one of orpha_code or icd11_code must be specified.")
   }
 
   resp <- httr2::req_perform(req, verbosity = verbosity)

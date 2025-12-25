@@ -2,9 +2,10 @@
 % Please edit documentation in R/get_classification.R
 \name{get_classification}
 \alias{get_classification}
-\title{Get all Orphanet clinical entities}
+\title{Get classification for a specified ORPHAcode}
 \usage{
 get_classification(
+  orpha_code,
   lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
   api_key,
   output = c("df", "list", "json"),
@@ -12,6 +13,8 @@ get_classification(
 )
 }
 \arguments{
+\item{orpha_code}{The ORPHAcode}
+
 \item{lang}{The language in which entities are to be returned. Possible
 values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".}
 
@@ -23,14 +26,17 @@ values are "CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT".}
 \item{verbosity}{How much information to print}
 }
 \value{
-A data frame containing all entities in the chosen language.
+A data frame, list or json containing the classification and datetime for a specified ORPHAcode.
 }
 \description{
-Retrieves all clinical entities from the 'ORPHAcode' API.
+Get classification for a specified ORPHAcode
 }
 \examples{
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-get_classification(lang = "EN",
-                   api_key = "jfeldhege")
+
+# Get classification for blue cone monochromatism (ORPHAcode 16)
+get_classification(code = 16,
+                   lang = "EN",
+                   api_key = "jfeldhege/oRphacode")
 \dontshow{\}) # examplesIf}
 }

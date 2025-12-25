@@ -5,7 +5,7 @@
 \title{Find association of ORPHAcode and ICD-11 code}
 \usage{
 get_icd11(
-  ORPHAcode = NULL,
+  orpha_code = NULL,
   icd11_code = NULL,
   lang = c("CS", "DE", "EN", "ES", "FR", "IT", "NL", "PL", "PT"),
   api_key,
@@ -14,7 +14,7 @@ get_icd11(
 )
 }
 \arguments{
-\item{ORPHAcode}{The ORPHAcode}
+\item{orpha_code}{The ORPHAcode}
 
 \item{icd11_code}{The ICD-11 code to look for}
 
@@ -38,7 +38,7 @@ Find association of ORPHAcode and ICD-11 code
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # Get ICD-11 code for Achondroplasia (ORPHAcode = 15)
-get_icd11(ORPHAcode = 15,
+get_icd11(orpha_code = 15,
           lang = "EN",
           api_key = "jfeldhege/oRphacode")
 
